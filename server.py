@@ -2,11 +2,13 @@ import base64
 import json
 import os
 import traceback
+import uuid
 import sys
 
 import flask
 import gevent.wsgi
 import pymysql
+import redis
 
 
 app = flask.Flask(__name__)
@@ -17,6 +19,7 @@ relationships = json.loads(base64.b64decode(os.environ["PLATFORM_RELATIONSHIPS"]
 def hello_world():
     tests = {}
     tests["mysql"] = wrap_test(test_mysql, relationships["mysql"][0])
+    tests["redis"] = wrap_test(test_redis, relationships["redis"][0])
     return json.dumps(tests)
 
 
@@ -51,6 +54,19 @@ def test_mysql(instance):
 
     finally:
         connection.close()
+
+
+def test_redis(instance):
+    r = redis.StrictRedis(
+        host=instance["host"],
+        port=instance["port"],
+        db=0,
+    )
+    key_name = "foo-%s" + str(uuid.uuid4())
+    value = "bar"
+
+    r.set(key_name, "bar")
+    assert value == r.get(key_name)
 
 
 if __name__ == "__main__":
