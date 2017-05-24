@@ -6,6 +6,7 @@ import uuid
 import sys
 
 import flask
+import flask.json
 import gevent.wsgi
 import pymysql
 import redis
@@ -16,11 +17,11 @@ app = flask.Flask(__name__)
 relationships = json.loads(base64.b64decode(os.environ["PLATFORM_RELATIONSHIPS"]))
 
 @app.route('/')
-def hello_world():
+def root():
     tests = {}
     tests["mysql"] = wrap_test(test_mysql, relationships["mysql"][0])
     tests["redis"] = wrap_test(test_redis, relationships["redis"][0])
-    return json.dumps(tests)
+    return flask.json.jsonify(tests)
 
 
 def wrap_test(callback, *args, **kwargs):
