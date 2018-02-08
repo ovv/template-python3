@@ -11,9 +11,10 @@ name = "pypi"
 
 [packages]
 
-PyMySQL = "*"
+pymysql = "*"
 gevent = "*"
-Flask = "*"
+flask = "*"
+redis = "*"
 
 
 [requires]
