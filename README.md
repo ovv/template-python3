@@ -1,4 +1,4 @@
-# Platform.sh Python 2.7 minimal example
+# Platform.sh Python 3.6 minimal example
 
 This project provides a starter kit for Django projects hosted on Platform.sh. It is primarily an example, although could be used as the starting point for a real project.
 
