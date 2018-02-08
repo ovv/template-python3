@@ -5,20 +5,32 @@
 
 # The name of this app. Must be unique within a project.
 name: app
-disk: 1024
+
+# The runtime the application uses.
 type: "python:2.7"
 
+# The build-time dependencies of the app.
 dependencies:
     python:
        pipenv: '*'
 
+# The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
       pipenv install --system
+
+# The size of the persistent disk of the application (in MB).
+disk: 1024
+# The relationships of the application with services or other applications.
+#
+# The left-hand side is the name of the relationship as it will be exposed
+# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
+# side is in the form `<service name>:<endpoint name>`.
 relationships:
     mysql: "mysql:mysql"
     redis: "redis:redis"
 
+# The configuration of app when it is exposed to the web.
 web:
     commands:
         start: python server.py
