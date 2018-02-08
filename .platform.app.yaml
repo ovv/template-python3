@@ -1,14 +1,14 @@
-
 name: app
-
 disk: 1024
-
 type: "python:2.7"
+
+dependencies:
+    python:
+       pipenv: '*'
 
 hooks:
     build: |
-        pip install -r requirements.pinned.txt
-
+      pipenv install --system
 relationships:
     mysql: "mysql:mysql"
     redis: "redis:redis"
