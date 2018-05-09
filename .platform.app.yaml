@@ -12,7 +12,7 @@ type: "python:3.6"
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
-      python -m pip install requirements.txt
+      python -m pip install -r requirements.txt
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024
