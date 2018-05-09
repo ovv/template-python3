@@ -9,6 +9,8 @@ name: app
 # The runtime the application uses.
 type: "python:3.6"
 
+dependencies:
+    python:
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
