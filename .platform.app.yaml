@@ -9,15 +9,11 @@ name: app
 # The runtime the application uses.
 type: "python:3.6"
 
-# The build-time dependencies of the app.
-dependencies:
-    python:
-       pipenv: '*'
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
-      pipenv install --system
+      python -m pip install requirements.txt
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024
