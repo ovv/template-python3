@@ -64,7 +64,7 @@ def test_redis(instance):
         db=0,
     )
     key_name = "foo-%s" + str(uuid.uuid4())
-    value = b"bar"
+    value = "bar"
 
     r.set(key_name, "bar")
     assert value == r.get(key_name)
