@@ -6,7 +6,6 @@ import uuid
 import sys
 
 import flask
-import flask.json
 import gevent.pywsgi
 import pymysql
 import redis
@@ -14,7 +13,9 @@ import redis
 
 app = flask.Flask(__name__)
 
-relationships = json.loads(base64.b64decode(os.environ["PLATFORM_RELATIONSHIPS"]))
+relationships = json.loads(
+    base64.b64decode(os.environ["PLATFORM_RELATIONSHIPS"]))
+
 
 @app.route('/')
 def root():
@@ -71,5 +72,6 @@ def test_redis(instance):
 
 
 if __name__ == "__main__":
-    http_server = gevent.pywsgi.WSGIServer(('127.0.0.1', int(os.environ["PORT"])), app)
+    http_server = gevent.pywsgi.WSGIServer(
+        ('127.0.0.1', int(os.environ["PORT"])), app)
     http_server.serve_forever()
