@@ -12,12 +12,12 @@ type: "python:3.7"
 # The build-time dependencies of the app.
 dependencies:
     python3:
-       pipenv: '*'
+       pipenv: "2018.10.13"
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     build: |
-      pipenv install --system
+      pipenv install --system --deploy
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024
