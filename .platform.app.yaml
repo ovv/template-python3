@@ -34,3 +34,16 @@ relationships:
 web:
     commands:
         start: python server.py
+
+
+source:
+    operations:
+        test:
+            command: |
+                ls -la
+                date > foo
+                git add .
+                git commit -m "foo"
+                date > bar
+                git add .
+                git commit -m "bar"
