@@ -1,4 +1,4 @@
-This file describes an application. You can have multiple applications
+#This file describes an application. You can have multiple applications
 # in the same project.
 #
 # See https://docs.platform.sh/user_guide/reference/platform-app-yaml.html
@@ -27,7 +27,7 @@ disk: 1024
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
-    database: "db:mysql"
+    database: "da:mysql"
     rediscache: "cache:redis"
 
 # The configuration of app when it is exposed to the web.
